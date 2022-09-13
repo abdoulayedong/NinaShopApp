@@ -65,7 +65,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <EmbeddedResource Include="90690-shopping.json" />
+    <Compile Include="SplashViewController.cs" />
+    <EmbeddedResource Include="shopping.json" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
