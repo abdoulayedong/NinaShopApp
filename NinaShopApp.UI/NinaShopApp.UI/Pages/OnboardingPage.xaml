@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cc:CustomContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NinaShopApp.UI.Pages.OnboardingPage"
+             xmlns:cc="clr-namespace:NinaShopApp.UI.CustomControls">
+    <Grid RowDefinitions="auto, *,auto">
+        <Label Text="NinaShop"
+               FontSize="38"
+               FontFamily="MuliBold"
+               Margin="0,40,0,10"
+               HorizontalTextAlignment="Center"
+               TextColor="{DynamicResource Primary}"/>
+
+        <StackLayout Grid.Row="1">
+            <CarouselView ItemsSource="{Binding Items}"
+                          IndicatorView="indicatorView"
+                          Loop="False"
+                          VerticalOptions="FillAndExpand">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="0">
+                            <Label Text="{Binding Message}"
+                                   TextColor="{DynamicResource TextColor}"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="16"
+                                   VerticalOptions="Start"/>
+                            <cc:CustomImage ImageSource="{Binding ImageSource}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Margin="50"
+                                   HeightRequest="295"
+                                   WidthRequest="265"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="indicatorView"
+                           VerticalOptions="End"
+                           SelectedIndicatorColor="{DynamicResource Primary}"
+                           IndicatorColor="{DynamicResource DotColor}"
+                           HorizontalOptions="Center">
+                <IndicatorView.IndicatorTemplate>
+                    <DataTemplate>
+                        <BoxView CornerRadius="10"
+                                 HeightRequest="10"
+                                 WidthRequest="10">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="WidthRequest" Value="10" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="WidthRequest" Value="30" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </BoxView>
+                    </DataTemplate>
+                </IndicatorView.IndicatorTemplate>
+            </IndicatorView>
+        </StackLayout>
+
+        <Button Text="Continue"
+                Grid.Row="2"
+                Style="{DynamicResource RoundedButton}"
+                Margin="15,50"
+                Command="{Binding GoToSignupCommand}"/>
+    </Grid>
+</cc:CustomContentPage>

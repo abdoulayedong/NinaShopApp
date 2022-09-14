@@ -1,6 +1,6 @@
-﻿using System;
+﻿using FreshMvvm;
+using NinaShopApp.UI.PageModels;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace NinaShopApp.UI
 {
@@ -9,20 +9,14 @@ namespace NinaShopApp.UI
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            LoadBasicNav();
         }
 
-        protected override void OnStart()
+        public void LoadBasicNav()
         {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            Page onboardingPage = FreshPageModelResolver.ResolvePageModel<OnboardingPageModel>();
+            FreshNavigationContainer basicNavigation = new FreshNavigationContainer(onboardingPage);
+            MainPage = basicNavigation;
         }
     }
 }
